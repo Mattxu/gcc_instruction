@@ -1,0 +1,21 @@
+
+gcc的编译过程分为4个步骤：预处理、编译、汇编和连接。
+
+1、预处理
+   gcc -E test.c -o test.i 或 gcc -E test.c
+   cat test.i 查看预处理的结果
+   
+2、编译
+   预处理之后，可直接对生成的test.i文件进行编译，生成汇编编码：
+   gcc -S test.i -o test.s
+   cat test.s 查看编译的结果
+   
+3、汇编
+   对于编译生成的.s文件，gas汇编器负责将其编译成目标文件
+   gcc -c test.s -o test.o
+   cat test.o 查看汇编结果
+   
+4、链接
+   对于汇编生成的.o文件，将其与C标准输入输出库进行连接，最终生成程序test
+   gcc test.o -o test
+   ./test 查看结果
